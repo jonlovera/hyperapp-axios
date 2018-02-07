@@ -17,7 +17,7 @@ npm install --save hyperapp-axios-reducer
 
 ```js
 import {h, app} from "hyperapp"
-import apiActions from "utils/create-api-reducers";
+import apiActions from "hyperapp-axios-reducer";
 
 const state = {};
 
