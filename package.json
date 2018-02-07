@@ -1,0 +1,57 @@
+{
+    "name": "hyperapp-axios-reducer",
+    "description": "Hyperapp reducer for fetching data with axios HTTP client",
+    "version": "0.0.1",
+    "main": "dist/hyperapp-axios-reducer.js",
+    "jsnext:main": "src/index.js",
+    "module": "src/index.js",
+    "license": "MIT",
+    "homepage": "https://github.com/jonlov/hyperapp-axios-reducer#readme",
+    "bugs": {
+        "url": "https://github.com/jonlov/hyperapp-axios-reducer/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jonlov/hyperapp-axios-reducer.git"
+    },
+    "files": [
+        "src",
+        "dist"
+    ],
+    "author": "Jonathan Lovera (jonathan@rootplace.com)",
+    "keywords": [
+        "hyperapp",
+        "hyperapp-axios-reducer",
+        "axios",
+        "api",
+        "state managment"
+    ],
+    "scripts": {
+        "test": "jest --coverage --no-cache",
+        "build": "npm run bundle && npm run minify",
+        "bundle": "rollup -c",
+        "minify": "uglifyjs dist/hyperapp-axios-reducer.js -o dist/hyperapp-axios-reducer.js",
+        "prepare": "npm run build",
+        "release": "npm run build && npm test && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
+    },
+    "babel": {
+        "presets": "env"
+    },
+    "dependencies": {
+        "axios": "^0.17.1"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-plugin-external-helpers": "^6.22.0",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-preset-env": "^1.6.1",
+        "babel-preset-es2015": "^6.24.1",
+        "eslint": "^4.13.1",
+        "eslint-config-airbnb-base": "^12.0.0",
+        "eslint-plugin-import": "^2.2.0",
+        "jest": "^22.0.4",
+        "uglify-js": "3.2.2",
+        "rollup": "^0.53.3",
+        "rollup-plugin-babel": "^3.0.3"
+    }
+}
