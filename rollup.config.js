@@ -4,10 +4,9 @@ export default[
     {
         input : 'src/index.js',
         output : {
-            file: 'dist/hyperapp-axios-reducer.js',
-            format: 'iife',
-            sourceMap: isWatching,
-            moduleName: 'window'
+            format: 'umd',
+            name: 'hyperappAxiosReducer',
+            file: 'dist/hyperapp-axios-reducer.js'
         },
         plugins : [babel({exclude: 'node_modules/**', runtimeHelpers: true})]
     }
