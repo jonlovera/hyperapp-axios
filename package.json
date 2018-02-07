@@ -1,7 +1,7 @@
 {
     "name": "hyperapp-axios-reducer",
     "description": "Hyperapp reducer for fetching data with axios HTTP client",
-    "version": "0.1.0",
+    "version": "0.1.01",
     "main": "dist/hyperapp-axios-reducer.js",
     "jsnext:main": "src/index.js",
     "module": "src/index.js",
