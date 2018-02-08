@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/dm/hyperapp-axios-reducer.svg)](https://www.npmjs.com/package/hyperapp-axios-reducer) [![GitHub license](https://img.shields.io/github/license/jonlov/hyperapp-axios-reducer.svg)](https://github.com/jonlov/hyperapp-axios-reducer/blob/master/LICENSE)
 
-hyperapp-axios-reducer is a 1.5 KB library that expose an api object into the hyperapp actions and automatically sync the hyperapp state with the response.
+hyperapp-axios-reducer is a 1.5 KB library that exposes an api object into the hyperapp actions and automatically syncs the hyperapp state with the response.
 
 ## Installation
 
