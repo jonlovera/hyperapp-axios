@@ -2,8 +2,8 @@
 
 [![npm](https://img.shields.io/npm/dm/hyperapp-axios-reducer.svg)](https://www.npmjs.com/package/hyperapp-axios-reducer) [![GitHub license](https://img.shields.io/github/license/jonlov/hyperapp-axios-reducer.svg)](https://github.com/jonlov/hyperapp-axios-reducer/blob/master/LICENSE)
 
-hyperapp-axios-reducer is a 3 KB library (including axios) that expose an api object into the hyperapp actions and handle all the states of the data for you.
-
+hyperapp-axios-reducer is a 1.5 KB library that expose an api object into the hyperapp actions and handle all the states of the data for you.
+hyperapp-axios-reducer
 ## Installation
 
 ```bash
@@ -34,33 +34,32 @@ const view = (state, actions) => {
     // it will add an api object to the state which depending
     // on the data you're requesting it will append
     // isFetching and the object itself
-    const {users} = state.api;
+    const {repos} = state.api;
 
     if (!users) {
         // GET REQUESTS
-        api.get('users/jonlov');
+        api.get('repos/jonlov/hyperapp-axios-reducer');
 
         // POST REQUESTS
-        // api.post({id:'users/jonlov', data: {username: 'jonlov'}});
+        // api.post({id:'repos/jonlov/hyperapp-axios-reducer', data: {username: 'jonlov'}});
 
         // PUT REQUESTS
-        // api.put({id:'users/jonlov', data: {username: 'jonlov'}});
+        // api.put({id:'repos/jonlov/hyperapp-axios-reducer', data: {username: 'jonlov'}});
 
         // DELETE REQUESTS
-        // api.delete('users/jonlov');
+        // api.delete('repos/jonlov/hyperapp-axios-reducer');
     }
 
     if (!users || users && users.isFetching)
         return (
-            <div>LOADING</div>
+            <h1>LOADING</h1>
         );
 
-    const {name, avatar_url, error, html_url} = users;
+    const {name, error, html_url} = repos;
     return (
         <div>
             <a href={html_url} target="_BLANK">
-                <div>{name}</div>
-                <img src={avatar_url} height="100px"/>
+                <h1>{name}</h1>
             </a>
             {error}
         </div>

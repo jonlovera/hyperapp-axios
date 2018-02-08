@@ -30,7 +30,7 @@
         "test": "jest --coverage --no-cache",
         "build": "npm run bundle && npm run minify",
         "bundle": "rollup -c",
-        "minify": "uglifyjs dist/hyperapp-axios-reducer.js -o dist/hyperapp-axios-reducer.js",
+        "minify": "uglifyjs dist/hyperapp-axios-reducer.js -o dist/hyperapp-axios-reducer.js --compress --mangle",
         "prepare": "npm run build",
         "release": "npm run build && npm test && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
     },
@@ -50,7 +50,7 @@
         "eslint-config-airbnb-base": "^12.0.0",
         "eslint-plugin-import": "^2.2.0",
         "jest": "^22.0.4",
-        "uglify-js": "3.2.2",
+        "uglify-es": "3.2.2",
         "rollup": "^0.53.3",
         "rollup-plugin-babel": "^3.0.3"
     }
