@@ -1,13 +1,13 @@
 # hyperapp-axios-reducer
 
-[![npm](https://img.shields.io/npm/dm/hyperapp-axios-reducer.svg)](https://www.npmjs.com/package/hyperapp-axios-reducer) [![GitHub license](https://img.shields.io/github/license/jonlov/hyperapp-axios-reducer.svg)](https://github.com/jonlov/hyperapp-axios-reducer/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/jonlov/hyperapp-axios-reducer.svg)](https://github.com/jonlov/hyperapp-axios-reducer/blob/master/LICENSE.md)
 
 hyperapp-axios-reducer is a 1.5 KB library that exposes an api object into the hyperapp actions and automatically syncs the hyperapp state with the response.
 
 ## Installation
 
 ```bash
-npm install --save axios hyperapp-axios-reducer
+npm install --save hyperapp-axios-reducer
 ```
 
 ### Dependencies
@@ -75,7 +75,7 @@ export default main;
 
 ## License
 
-hyperapp-axios-reducer is MIT licensed. See `LICENSE.md`.
+hyperapp-axios-reducer is MIT licensed. See ([LICENSE.md](https://github.com/jonlov/hyperapp-axios-reducer/blob/master/LICENSE.md)).
 
 ## Acknowledgements
 
