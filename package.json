@@ -1,7 +1,7 @@
 {
     "name": "hyperapp-axios-reducer",
-    "description": "Hyperapp reducer for fetching data with axios HTTP client",
-    "version": "0.1.02",
+    "description": "Hyperapp automatic state management when fetching data with axios",
+    "version": "0.1.1",
     "main": "dist/hyperapp-axios-reducer.js",
     "jsnext:main": "src/index.js",
     "module": "src/index.js",
@@ -24,7 +24,8 @@
         "hyperapp-axios-reducer",
         "axios",
         "api",
-        "state managment"
+        "automatic state management",
+        "state management"
     ],
     "scripts": {
         "test": "jest --coverage --no-cache",

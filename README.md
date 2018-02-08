@@ -2,12 +2,12 @@
 
 [![npm](https://img.shields.io/npm/dm/hyperapp-axios-reducer.svg)](https://www.npmjs.com/package/hyperapp-axios-reducer) [![GitHub license](https://img.shields.io/github/license/jonlov/hyperapp-axios-reducer.svg)](https://github.com/jonlov/hyperapp-axios-reducer/blob/master/LICENSE)
 
-hyperapp-axios-reducer is a 1.5 KB library that expose an api object into the hyperapp actions and handle all the states of the data for you.
-hyperapp-axios-reducer
+hyperapp-axios-reducer is a 1.5 KB library that expose an api object into the hyperapp actions and automatically sync the hyperapp state with the response.
+
 ## Installation
 
 ```bash
-npm install --save hyperapp-axios-reducer
+npm install --save axios hyperapp-axios-reducer
 ```
 
 ### Dependencies
@@ -70,6 +70,8 @@ const main = app(state, actions, view, document.body);
 
 export default main;
 ```
+
+([Live example](https://codepen.io/0n/pen/aqpbLm))
 
 ## License
 
