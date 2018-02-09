@@ -4,8 +4,6 @@
 
 hyperapp-axios is a 1.5 KB library that exposes an api object into the hyperapp actions and automatically syncs the hyperapp state with axios response.
 
-([Live example](https://codepen.io/0n/pen/aqpbLm))
-
 ## Installation
 
 ```bash
@@ -79,8 +77,6 @@ export default main;
 
 This is an example of the same ([hypperapp gif search example](https://codepen.io/hyperapp/pen/ZeByKv)) but instead was rewritten with hyperapp-axios in few lines of code.
 
-([Live example](https://codepen.io/0n/pen/aqpbLm))
-
 ```js
 import {h, app} from "hyperapp"
 import apiActions from "hyperapp-axios";
@@ -116,6 +112,8 @@ const view = (state, actions) => {
 
 const main = app(state, actions, view, document.body);
 ```
+
+([Live example](https://codepen.io/0n/pen/JpEejd))
 
 ## License
 
