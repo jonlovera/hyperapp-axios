@@ -1,24 +1,26 @@
-# hyperapp-axios-reducer
+# hyperapp-axios
 
-[![GitHub license](https://img.shields.io/github/license/jonlov/hyperapp-axios-reducer.svg)](https://github.com/jonlov/hyperapp-axios-reducer/blob/master/LICENSE.md)
+[![GitHub license](https://img.shields.io/github/license/jonlov/hyperapp-axios.svg)](https://github.com/jonlov/hyperapp-axios/blob/master/LICENSE.md)
 
-hyperapp-axios-reducer is a 1.5 KB library that exposes an api object into the hyperapp actions and automatically syncs the hyperapp state with the response.
+hyperapp-axios is a 1.5 KB library that exposes an api object into the hyperapp actions and automatically syncs the hyperapp state with axios response.
+
+([Live example](https://codepen.io/0n/pen/aqpbLm))
 
 ## Installation
 
 ```bash
-npm install --save hyperapp-axios-reducer
+npm install --save hyperapp-axios
 ```
 
 ### Dependencies
 
-`hyperapp-axios-reducer` depends on `axios`.
+`hyperapp-axios` depends on `axios`.
 
 ### Getting Started
 
 ```js
 import {h, app} from "hyperapp"
-import apiActions from "hyperapp-axios-reducer";
+import apiActions from "hyperapp-axios";
 
 const state = {};
 
@@ -36,21 +38,21 @@ const view = (state, actions) => {
     // isFetching and the object itself
     const {repos} = state.api;
 
-    if (!users) {
+    if (!repos) {
         // GET REQUESTS
-        api.get('repos/jonlov/hyperapp-axios-reducer');
+        api.get('repos/jonlov/hyperapp-axios');
 
         // POST REQUESTS
-        // api.post({id:'repos/jonlov/hyperapp-axios-reducer', data: {username: 'jonlov'}});
+        // api.post({id:'repos/jonlov/hyperapp-axios', data: {username: 'jonlov'}});
 
         // PUT REQUESTS
-        // api.put({id:'repos/jonlov/hyperapp-axios-reducer', data: {username: 'jonlov'}});
+        // api.put({id:'repos/jonlov/hyperapp-axios', data: {username: 'jonlov'}});
 
         // DELETE REQUESTS
-        // api.delete('repos/jonlov/hyperapp-axios-reducer');
+        // api.delete('repos/jonlov/hyperapp-axios');
     }
 
-    if (!users || users && users.isFetching)
+    if (!repos || repos && repos.isFetching)
         return (
             <h1>LOADING</h1>
         );
@@ -73,9 +75,51 @@ export default main;
 
 ([Live example](https://codepen.io/0n/pen/aqpbLm))
 
+# Gif search example
+
+This is an example of the same ([hypperapp gif search example](https://codepen.io/hyperapp/pen/ZeByKv)) but instead was rewritten with hyperapp-axios in few lines of code.
+
+([Live example](https://codepen.io/0n/pen/aqpbLm))
+
+```js
+import {h, app} from "hyperapp"
+import apiActions from "hyperapp-axios";
+
+const GIPHY_API_KEY = "dc6zaTOxFJmzC";
+
+const state = {};
+const actions = {
+    ...apiActions('https://api.giphy.com/v1'),
+    search: e => (state, actions) => {
+        actions.api.get(`gifs/search?q=${e.target.value}&api_key=${GIPHY_API_KEY}`);
+    }
+};
+
+const view = (state, actions) => {
+    // it will add an api object to the state which depending
+    // on the data you're requesting it will append
+    // isFetching and the object itself
+    const gifs = state.api.gifs;
+    const url = (gifs && !gifs.isFetching && gifs.data)
+        ? gifs.data[0].images.original.url
+        : "https://i.pinimg.com/originals/87/b8/67/87b8671c2d08dc83554806539022bde7.gif";
+
+    return (
+        <main>
+            <input type="text" onkeyup={actions.search} placeholder="Type here..." autofocus/>
+            <div class="container" style={{
+                backgroundImage: 'url(' + url + ')'
+            }}/>
+        </main>
+    );
+}
+
+const main = app(state, actions, view, document.body);
+```
+
 ## License
 
-hyperapp-axios-reducer is MIT licensed. See ([LICENSE.md](https://github.com/jonlov/hyperapp-axios-reducer/blob/master/LICENSE.md)).
+hyperapp-axios is MIT licensed. See ([LICENSE.md](https://github.com/jonlov/hyperapp-axios/blob/master/LICENSE.md)).
 
 ## Acknowledgements
 

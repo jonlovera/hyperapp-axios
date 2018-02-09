@@ -1,18 +1,18 @@
 {
-    "name": "hyperapp-axios-reducer",
+    "name": "hyperapp-axios",
     "description": "Hyperapp automatic state management when fetching data with axios",
     "version": "0.1.10",
-    "main": "dist/hyperapp-axios-reducer.js",
+    "main": "dist/hyperapp-axios.js",
     "jsnext:main": "src/index.js",
     "module": "src/index.js",
     "license": "MIT",
-    "homepage": "https://github.com/jonlov/hyperapp-axios-reducer#readme",
+    "homepage": "https://github.com/jonlov/hyperapp-axios#readme",
     "bugs": {
-        "url": "https://github.com/jonlov/hyperapp-axios-reducer/issues"
+        "url": "https://github.com/jonlov/hyperapp-axios/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/jonlov/hyperapp-axios-reducer.git"
+        "url": "git+https://github.com/jonlov/hyperapp-axios.git"
     },
     "files": [
         "src",
@@ -21,17 +21,21 @@
     "author": "Jonathan Lovera (jonathan@rootplace.com)",
     "keywords": [
         "hyperapp",
-        "hyperapp-axios-reducer",
+        "hyperapp-axios",
         "axios",
         "api",
         "automatic state management",
-        "state management"
+        "state management",
+        "xhr",
+        "http",
+        "ajax",
+        "promise"
     ],
     "scripts": {
         "test": "jest --coverage --no-cache",
         "build": "npm run bundle && npm run minify",
         "bundle": "rollup -c",
-        "minify": "uglifyjs dist/hyperapp-axios-reducer.js -o dist/hyperapp-axios-reducer.js --compress --mangle",
+        "minify": "uglifyjs dist/hyperapp-axios.js -o dist/hyperapp-axios.js --compress --mangle",
         "prepare": "npm run build",
         "release": "npm run build && npm test && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
     },

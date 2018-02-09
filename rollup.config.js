@@ -5,8 +5,8 @@ export default[
         input : 'src/index.js',
         output : {
             format: 'umd',
-            name: 'hyperappAxiosReducer',
-            file: 'dist/hyperapp-axios-reducer.js'
+            name: 'hyperappAxios',
+            file: 'dist/hyperapp-axios.js'
         },
         plugins : [babel({exclude: 'node_modules/**', runtimeHelpers: true})]
     }
