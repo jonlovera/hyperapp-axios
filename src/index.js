@@ -1,6 +1,6 @@
 import axios from 'axios/dist/axios';
 
-export default(apiUrl) => {
+export default(apiUrl, apiName='api') => {
     const getIdAndConfig = (idOrObject) => {
             return (typeof idOrObject === 'object')
                 ? idOrObject
@@ -12,6 +12,7 @@ export default(apiUrl) => {
             const {
                 id,
                 data = {},
+                header = {},
                 config = {}
             } = getIdAndConfig(idOrObject);
 
@@ -31,6 +32,7 @@ export default(apiUrl) => {
                 method: action,
                 url,
                 data,
+                header,
                 config
             }).then((response) => {
                 updateType(updateTypeObj(response.data));
@@ -42,7 +44,7 @@ export default(apiUrl) => {
         };
 
     return {
-        api: {
+        [apiName]: {
             updateType: ({name, data}) => (state, actions) => ({[name]: data}),
             get: (idOrObject) => (state, actions) => fetchHandler('get', idOrObject, actions.updateType),
             post: (idOrObject) => (state, actions) => fetchHandler('post', idOrObject, actions.updateType),
