@@ -1,7 +1,7 @@
 {
     "name": "hyperapp-axios",
     "description": "Hyperapp automatic state management when fetching data with axios",
-    "version": "0.1.10",
+    "version": "0.1.11",
     "main": "dist/hyperapp-axios.js",
     "jsnext:main": "src/index.js",
     "module": "src/index.js",
