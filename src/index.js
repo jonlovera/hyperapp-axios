@@ -1,6 +1,10 @@
 import axios from 'axios/dist/axios';
 
-export default(apiUrl, apiName='api') => {
+export const setDefaultHeader = (name, value) => {
+    axios.defaults.headers.common[name] = value;
+}
+
+export default(apiUrl, apiName = 'api') => {
     const getIdAndConfig = (idOrObject) => {
             return (typeof idOrObject === 'object')
                 ? idOrObject
@@ -8,37 +12,36 @@ export default(apiUrl, apiName='api') => {
                     id: idOrObject
                 };
         },
-        fetchHandler = (action, idOrObject, updateType) => {
+        fetchHandler = (action, idOrObject, state, updateType) => {
             const {
                 id,
                 data = {},
-                header = {},
-                config = {}
+                config = {},
+                headers = {},
+                keepState = false
             } = getIdAndConfig(idOrObject);
 
             const url = `${apiUrl}/${id}`,
                 name = id.split('/')[0],
+                oldState = (keepState)
+                    ? state[name]
+                    : {},
                 updateTypeObj = (data) => {
                     return {
                         name,
                         data: {
+                            ...oldState,
                             ...data
                         }
                     }
                 };
 
             updateType(updateTypeObj({isFetching: true}));
-            axios({
-                method: action,
-                url,
-                data,
-                header,
-                config
-            }).then((response) => {
+            axios({method: action, url, data, config, headers}).then((response) => {
                 updateType(updateTypeObj(response.data));
             }).catch((error) => {
                 updateType(updateTypeObj({
-                    error: (error.message || error).toString()
+                    error: error.response.data || (error.message).toString()
                 }));
             });
         };
@@ -46,10 +49,10 @@ export default(apiUrl, apiName='api') => {
     return {
         [apiName]: {
             updateType: ({name, data}) => (state, actions) => ({[name]: data}),
-            get: (idOrObject) => (state, actions) => fetchHandler('get', idOrObject, actions.updateType),
-            post: (idOrObject) => (state, actions) => fetchHandler('post', idOrObject, actions.updateType),
-            put: (idOrObject) => (state, actions) => fetchHandler('put', idOrObject, actions.updateType),
-            delete: (idOrObject) => (state, actions) => fetchHandler('delete', idOrObject, actions.updateType)
+            get: (idOrObject) => (state, actions) => fetchHandler('get', idOrObject, state, actions.updateType),
+            post: (idOrObject) => (state, actions) => fetchHandler('post', idOrObject, state, actions.updateType),
+            put: (idOrObject) => (state, actions) => fetchHandler('put', idOrObject, state, actions.updateType),
+            delete: (idOrObject) => (state, actions) => fetchHandler('delete', idOrObject, state, actions.updateType)
         }
     }
 }
